@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\TaskManagement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TaskManagementController extends Controller
 {
@@ -12,7 +14,9 @@ class TaskManagementController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'tasks' => TaskManagement::all()
+        ]);
     }
 
     /**
@@ -20,7 +24,9 @@ class TaskManagementController extends Controller
      */
     public function create()
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 
     /**
@@ -28,7 +34,23 @@ class TaskManagementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title'   => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        $insertTaskManagement        = new TaskManagement();
+        $insertTaskManagement->title = $request->input('title');
+        $insertTaskManagement->save();
+
+        return response()->json([
+            'message' => 'Task has been created successfully!'
+        ]);
     }
 
     /**
@@ -36,7 +58,9 @@ class TaskManagementController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 
     /**
@@ -44,7 +68,9 @@ class TaskManagementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 
     /**
@@ -52,7 +78,9 @@ class TaskManagementController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 
     /**
@@ -60,6 +88,8 @@ class TaskManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 }

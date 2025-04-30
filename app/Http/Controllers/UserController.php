@@ -25,7 +25,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 
     /**
@@ -62,7 +64,9 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 
     /**
@@ -70,7 +74,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 
     /**
@@ -78,7 +84,9 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 
     /**
@@ -86,6 +94,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 }

@@ -1,15 +1,9 @@
 <?php
 
 use App\Http\Controllers\Backend\PostController;
+use App\Http\Controllers\Backend\TaskManagementController;
 use App\Http\Controllers\UserController;
-use App\Models\Post;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
 
 //User Registration all routes start
 Route::get('/users',[UserController::class,'index']);
@@ -23,10 +17,19 @@ Route::delete('/users/delete/{id}', [UserController::class, 'destroy']);
 //Post all routes start
 Route::get('/posts',[PostController::class,'index']);
 Route::post('/posts/store',[PostController::class,'store']);
-Route::get('/posts/edit/{id}',[PostController::class,'edit']);
+Route::get('/posts/show/{id}',[PostController::class,'show']);
 Route::patch('/posts/update/{id}', [PostController::class, 'update']);
 Route::delete('/posts/delete/{id}', [PostController::class, 'destroy']);
 //Post all routes end
+
+
+//Task management all routes start
+Route::get('/tasks',[TaskManagementController::class,'index']);
+Route::post('/tasks/store',[TaskManagementController::class,'store']);
+Route::get('/tasks/show/{id}',[TaskManagementController::class,'show']);
+Route::patch('/tasks/update/{id}', [TaskManagementController::class, 'update']);
+Route::delete('/tasks/delete/{id}', [TaskManagementController::class, 'destroy']);
+//Task management all routes end
 
 
 

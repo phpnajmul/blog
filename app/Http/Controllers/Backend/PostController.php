@@ -24,7 +24,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return response()->json([
+            'message' => 'Not Required your test'
+        ]);
     }
 
     /**
@@ -72,7 +74,17 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $postUpdate = Post::find($id);
+
+        if (!$postUpdate) {
+            return response()->json([
+                'message' => 'Post not found!'
+            ]);
+        }
+
+        return response()->json([
+            'editData' => $postUpdate
+        ]);
     }
 
     /**
@@ -80,10 +92,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        $postUpdate = Post::find($id);
-
         return response()->json([
-            'editData' => $postUpdate
+            'message' => 'Not Required your test'
         ]);
     }
 
